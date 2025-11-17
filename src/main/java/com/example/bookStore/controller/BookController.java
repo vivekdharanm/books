@@ -58,4 +58,18 @@ public class BookController
 			return ResponseEntity.notFound().build();
 		}
 	}
+
+	@PutMapping
+	public ResponseEntity<Book> updateBook(@PathVariable Long id, Book book)
+	{
+		try
+		{
+			return ResponseEntity.ok(bookService.updateBook(id,  book));
+		}
+		
+		catch(RuntimeException e)
+		{
+			return ResponseEntity.notFound().build();
+		}
+	}
 }
